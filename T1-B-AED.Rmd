@@ -1,0 +1,52 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+------------------------------------------------------------------------
+
+title: "R Notebook" output: pdf_document: default html_notebook: default ---"
+
+```{r}
+library(showtext)
+font_add("latinmodern", "C:\\Windows\\Fonts\\lmroman10-regular.otf")
+showtext_auto()
+
+```
+
+```{r}
+library('gapminder')
+library('tidyverse')
+library('ggplot2')
+library('extrafont')
+p <- ggplot(data=gapminder,mapping=aes(x=gdpPercap,y=lifeExp,color=continent))
+p+geom_point()+labs(title='Expectativa de Vida: PIB e Continentes',x='PIB Per Capita',y='Expectativa de vida (anos)',caption='Fonte: Gapminder')+theme(text=element_text(size=24,family="latinmodern"))+geom_smooth(method='gam',se=FALSE)+scale_x_log10(labels=scales::dollar)
+```
+
+```{r}
+p <- ggplot(data=gapminder,aes(x=gdpPercap,y=lifeExp,color=continent))
+p+geom_point()+geom_smooth(method='gam',se=FALSE)+labs(title='Expectativa de Vida: PIB e Continentes',x='PIB Per Capita',y='Expectativa de vida (anos)',caption='Fonte: Gapminder')+theme(text=element_text(size=24,family="latinmodern"))
+```
+
+```{r}
+p <- ggplot(data=gapminder,aes(x=pop,y=gdpPercap,color=continent))
+p+geom_point()+geom_smooth(method='gam',se=FALSE)+labs(title='Expectativa de Vida: PIB e Continentes',x='PIB Per Capita',y='PIB Per Capita',caption='Fonte: Gapminder')+theme(text=element_text(size=24,family="latinmodern"))+scale_x_log10()
+```
+
+
+
+
+
+```{r}
+gapminder
+```
+
+
+
+
+
+
+
+
+
+
